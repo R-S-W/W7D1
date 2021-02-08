@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+dclass SessionsController < ApplicationController
 
     def new
         @user = User.new
@@ -18,4 +18,9 @@ class SessionsController < ApplicationController
             redirect_to cats_url
         end    
     end
+
+    def destroy
+        
+    end
+
 end
