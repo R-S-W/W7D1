@@ -1,8 +1,8 @@
 
 
-<h1>Sign Up</h1>
+<h1>Login</h1>
 
-<form action = "<%= users_url %>" method = 'POST' >
+<form action = "<%= session_url %>" method = 'POST' >
     <label for = "username">Username</label>
     <input type = "text"  name = 'user[user_name]'  id = 'username' value = '<%= @user.user_name %>'></input>
 

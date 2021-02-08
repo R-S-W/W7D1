@@ -9,8 +9,26 @@
   </head>
 
   <body>
+    <header>
+      <% if logged_in? %>
+        <% user = User.find_by(session_token: session[:session_token]) %>
+        <h1><%= "Welcome #{user.user_name}" %></h1>
+        <form action = <%= user_url(user) %> method =  "POST" >
+          <input type = "hidden" name = "_method" value = 'DELETE'></input>
+          <button>Logout</button>
+        </form>
+      <% else %>
+        <form action= <%= new_session_url %> method = "POST"  >
+          <button>Login</button>
+        </form> 
+
+        <form action= <%= new_user_url %> method = "POST"  >
+          <button>Sign Up</button>
+        </form>          
+      <%end %>
+
+    </header>
   
-    <a href = "<%= new_session_url %>" >Login</a>
     <%= yield %>
   </body>
 </html>
