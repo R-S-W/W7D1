@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
-  before_action :require_logged_in, [:create, :edit, :new, :update]
-  before_action :confirm_owner, [:edit, :update]
+  before_action :require_logged_in, only: [:create, :edit, :new, :update]
+  before_action :confirm_owner, only: [:edit, :update]
 
 
 
@@ -46,9 +46,9 @@ class CatsController < ApplicationController
     end
   end
 
-  def is_owner?
+  def confirm_owner
     current_user.cats.each do |cat|
-      return true if cat.id == params[:id]
+      return if cat.id == params[:id].to_i
     end
     redirect_to cats_url
   end
