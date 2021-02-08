@@ -28,4 +28,12 @@ class ApplicationController < ActionController::Base
         redirect_to new_session_url unless logged_in?
     end
 
+
+    def confirm_owner
+        current_user.cats.each do |cat|
+        return if cat.id == params[:id].to_i
+        end
+        redirect_to cats_url
+    end
+
 end

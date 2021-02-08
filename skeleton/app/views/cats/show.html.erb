@@ -24,5 +24,16 @@
   </tr>
   <% @cat.rental_requests.order('start_date').each do |req| %>
     <%= render 'req_tr', req: req %>
+    <% if current_user == @cat.owner %>
+      <form action= <%= approve_cat_rental_request_url %> method = "POST"  >
+        <button>Approve</button>
+      </form> 
+
+      <form action= "<%= deny_cat_rental_request_url %>" method = "POST"  >
+        <button>Deny</button>
+      </form>         
+
+    <%end%>
+    
   <% end %>
 </table>

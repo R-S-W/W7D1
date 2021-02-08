@@ -46,12 +46,6 @@ class CatsController < ApplicationController
     end
   end
 
-  def confirm_owner
-    current_user.cats.each do |cat|
-      return if cat.id == params[:id].to_i
-    end
-    redirect_to cats_url
-  end
 
   private
 
